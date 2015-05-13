@@ -10,7 +10,7 @@ otp.config = {
     //This is default locale when wanted locale isn't found
     //Locale language is set based on wanted language in url >
     //user cookie > language set in browser (Not accept-language) 
-    locale: otp.locale.English,
+    locale: otp.locale.Italian,
 
     //All avalible locales
     //key is translation name. Must be the same as po file or .json file
@@ -100,9 +100,9 @@ otp.config = {
      * Site name / description / branding display options
      */
 
-    siteName            : "My OTP Instance",
+    siteName            : "ViviBus Bologna",
     siteDescription     : "An OpenTripPlanner deployment.",
-    logoGraphic         : 'images/otp_logo_darkbg_40px.png',
+    logoGraphic         : 'images/e-soft_logo_small.png',
     // bikeshareName    : "",
     //Enable this if you want to show frontend language chooser
     showLanguageChooser : true,

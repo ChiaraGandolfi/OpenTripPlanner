@@ -53,12 +53,13 @@ otp.locale.Italian = {
     infoWidgets : [
             {
                 title: 'Progetto',
-                content: '<p>Informazioni sul progetto</p>',
+                content: '<p>Open Trip Planner sul territorio di Bologna, basato su <a href="http://www.tper.it/tper-open-data">Open Data TPER</a>.</p>' +
+                         '<p>Dati rilasciati su licenza <a href="http://creativecommons.org/licenses/by/3.0/it">Creative Commons Attribuzione 3.0 Italia</a>.<br /><a href="http://www.tper.it/azienda/tper-open-data-note-legali">Note Legali</a></p>',
                 //cssClass: 'otp-contactWidget',
             },
             {
                 title: 'Contatti',
-                content: '<p>Commenti? Contattaci  su...</p>'
+                content: '<p>Progetto basato su <a href="http://www.opentripplanner.org/">Open Trip Planner</a>, personalizzato da <a href="http://e-soft.it/">e-soft s.r.l.</a></p>'
             },
     ],
 
