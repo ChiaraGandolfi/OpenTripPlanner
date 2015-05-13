@@ -26,5 +26,10 @@ gen-py/
 .idea/
 .sonar
 _site/
+<<<<<<< HEAD
 lucene/
 nb-configuration.xml
+=======
+otp
+otp-batch-analyst
+>>>>>>> upstream/master

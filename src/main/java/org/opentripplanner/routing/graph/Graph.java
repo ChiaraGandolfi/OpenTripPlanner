@@ -40,6 +40,7 @@ import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.prefs.Preferences;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.*;
 import org.joda.time.DateTime;
 import org.onebusaway.gtfs.impl.calendar.CalendarServiceImpl;
@@ -159,10 +160,11 @@ public class Graph implements Serializable {
     /** The density center of the graph for determining the initial geographic extent in the client. */
     private Coordinate center = null;
 
-    /**
-     * Makes it possible to embed a default configuration inside a graph.
-     */
-    public Properties embeddedPreferences = null;
+    /** The config JSON used to build this graph. Allows checking whether the configuration has changed. */
+    public String builderConfig = null;
+
+    /** Embed a router configuration inside the graph, for starting up with a single file. */
+    public String routerConfig = null;
 
     /* The preferences that were used for graph building. */
     public Preferences preferences = null;
@@ -485,7 +487,11 @@ public class Graph implements Serializable {
             throw new IllegalStateException("attempting to remove vertex that is not in graph.");
         }
 
-        List<Edge> edges = new ArrayList<Edge>(vertex.getDegreeIn() + vertex.getDegreeOut());
+        /*
+         * Note: We have to handle the removal of looping edges (for example RentABikeOn/OffEdge),
+         * we use a set to prevent having multiple times the same edge.
+         */
+        Set<Edge> edges = new HashSet<Edge>(vertex.getDegreeIn() + vertex.getDegreeOut());
         edges.addAll(vertex.getIncoming());
         edges.addAll(vertex.getOutgoing());
 

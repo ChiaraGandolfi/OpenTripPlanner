@@ -69,7 +69,7 @@ public class OTPApplication extends Application {
         Set<Class<?>> classes = Sets.newHashSet();
         classes.addAll(Arrays.asList(
             /* Jersey resource classes: define web services, i.e. an HTTP API. */
-            Planner.class,
+            PlannerResource.class,
             IndexAPI.class,
             ExternalGeocoderResource.class,
             GeocoderResource.class,
@@ -80,7 +80,7 @@ public class OTPApplication extends Application {
             ExternalGeocoderResource.class,
             TimeGridWs.class,
             AlertPatcher.class,
-            Planner.class,
+            PlannerResource.class,
             SIsochrone.class,
             Routers.class,
             Raster.class,
@@ -94,6 +94,7 @@ public class OTPApplication extends Application {
             GraphInspectorTileResource.class,
             ScriptResource.class,
             UpdaterStatusResource.class,
+            ScenarioResource.class,
             /* Features and Filters: extend Jersey, manipulate requests and responses. */
             CorsFilter.class,
             MultiPartFeature.class

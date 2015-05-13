@@ -138,7 +138,7 @@ public class OSMWithTags {
 
     /**
      * Returns a name-like value for an entity (if one exists). The otp: namespaced tags are created by
-     * {@link org.opentripplanner.graph_builder.impl.osm.OpenStreetMapGraphBuilderImpl#processRelations processRelations}
+     * {@link org.opentripplanner.graph_builder.module.osm.OpenStreetMapModule#processRelations processRelations}
      */
     public String getAssumedName() {
         if (_tags.containsKey("name"))
@@ -229,6 +229,25 @@ public class OSMWithTags {
     public boolean isMotorcarExplicitlyAllowed() {
         return doesTagAllowAccess("motorcar");
     }
+
+    /**
+     * Returns true if cars/motorcycles/HGV are explicitly denied access.
+     *
+     * @return
+     */
+    public boolean isMotorVehicleExplicitlyDenied() {
+        return isTagDeniedAccess("motor_vehicle");
+    }
+
+    /**
+     * Returns true if cars/motorcycles/HGV are explicitly allowed.
+     *
+     * @return
+     */
+    public boolean isMotorVehicleExplicitlyAllowed() {
+        return doesTagAllowAccess("motor_vehicle");
+    }
+
 
     /**
      * Returns true if bikes are explicitly denied access.
