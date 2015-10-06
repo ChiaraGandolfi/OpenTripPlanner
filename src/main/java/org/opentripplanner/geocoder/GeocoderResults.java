@@ -63,9 +63,9 @@ public class GeocoderResults {
     }
     
     public void addResult(GeocoderResult result) {
-        if (results == null)
-            results = new ArrayList<GeocoderResult>();
-        results.add(result);
+        if (this.results == null)
+            this.results = new ArrayList<GeocoderResult>();
+        this.results.add(result);
     }
 
     @XmlElement(name="count")

@@ -202,24 +202,10 @@ otp.core.IndexApi = otp.Class({
             }
         });
     },
-/* to be implemented
+
     loadStopsById : function(agencyId, id, callbackTarget, callback) {
-        var params = {
-            id : id,
-            extended : true
-        };
-        if(agencyId !== null) {
-            params.agency = agencyId;
-        }
-        if(typeof otp.config.routerId !== 'undefined') {
-            params.routerId = otp.config.routerId;
-        }
-
-        var url = otp.config.hostname + '/' + otp.config.restService + '/transit/stopData';
+        var url = otp.config.hostname + '/' + otp.config.restService + '/index/stops/' + agencyId + ':' + id;
         $.ajax(url, {
-            data:       params,
-            dataType:   'jsonp',
-
             success: function(data) {
                 callback.call(callbackTarget, data);
             }
@@ -228,25 +214,17 @@ otp.core.IndexApi = otp.Class({
 
     loadStopsByName : function(agencyId, name, callbackTarget, callback) {
         var params = {
-            name: name,
-            extended : true
+            name: name
         };
-        if(agencyId !== null) {
-            params.agency = agencyId;
-        }
-        if(typeof otp.config.routerId !== 'undefined') {
-            params.routerId = otp.config.routerId;
-        }
-
-        var url = otp.config.hostname + '/' + otp.config.restService + '/transit/stopsByName';
+        
+        var url = otp.config.hostname + '/' + otp.config.restService + '/index/stopsByName';
         $.ajax(url, {
-            data:       params,
-            dataType:   'jsonp',
+            data: params,
 
             success: function(data) {
                 callback.call(callbackTarget, data);
             }
         });
-    },
-    */
+    }
+    
 });

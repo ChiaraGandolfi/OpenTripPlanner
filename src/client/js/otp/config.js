@@ -17,11 +17,11 @@ otp.config = {
     //value is name of settings file for localization in locale subfolder
     //File should be loaded in index.html
     locales : {
+        'it': otp.locale.Italian,
         'en': otp.locale.English,
         'de': otp.locale.German,
         'sl': otp.locale.Slovenian,
         'fr': otp.locale.French,
-        'it': otp.locale.Italian,
         'ca_ES': otp.locale.Catalan
     },
 
@@ -88,8 +88,8 @@ otp.config = {
      * properties, when set, override that behavioir.
      */
      
-    // initLatLng : new L.LatLng(<lat>, <lng>),
-    // initZoom : 14,
+    initLatLng : new L.LatLng(44.49357, 11.34321),
+    initZoom : 13,
     // minZoom : 10,
     // maxZoom : 20,
     
@@ -151,10 +151,16 @@ otp.config = {
      */
 
     geocoders : [
-        {
+        /*{
             name: 'OTP built-in geocoder',
             className: 'otp.core.GeocoderBuiltin'
             // URL and query parameter do not need to be set for built-in geocoder.
+        },*/
+        {
+            name: 'Nominatim Geocoder',
+            className: 'otp.core.Geocoder',
+            url: 'otp/routers/default/nominatim',
+            addressParam: 'query'
         }
     ],
 
@@ -186,10 +192,10 @@ otp.config = {
 };
 var options = {
 	resGetPath: 'js/otp/locale/__lng__.json',
-	fallbackLng: 'en',
+	fallbackLng: 'it',
         nsseparator: ';;', //Fixes problem when : is in translation text
         keyseparator: '_|_',
-	preload: ['en'],
+	preload: ['it'],
         //TODO: Language choosing works only with this disabled
         /*lng: otp.config.locale_short,*/
         /*postProcess: 'add_nekaj', //Adds | around every string that is translated*/
@@ -217,11 +223,11 @@ i18n.init(options, function(t) {
     } 
 
     //Use infoWidgets from locale
-    //Default locale is English which has infoWidgets
+    //Default locale is Italian which has infoWidgets
     if ("infoWidgets" in otp.config.locale) {
         otp.config.infoWidgets=otp.config.locale.infoWidgets;
     } else {
-        otp.config.infoWidgets=otp.locale.English.infoWidgets;
+        otp.config.infoWidgets=otp.locale.Italian.infoWidgets;
     }
 
     if (otp.config.showLanguageChooser) {

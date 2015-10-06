@@ -38,7 +38,9 @@ otp.core.Geocoder = otp.Class({
               if (xhr === lastXhr){
                 if((typeof data) == "string") data = jQuery.parseXML(data);
                 var results = [];
-                $(data).find("geocoderResults").find("results").find("result").each(function () {
+                /* console.log("Data -> " + data); */
+                
+                $(data).find("GeocoderResults").find("results").find("results").each(function () {
                     var resultXml = $(this);
                     
                     var resultObj = {
@@ -49,6 +51,8 @@ otp.core.Geocoder = otp.Class({
     
                     results.push(resultObj);                    
                 });
+                
+                /* console.log("Results -> " + results); */
                 
                 setResultsCallback.call(this, results);
               }

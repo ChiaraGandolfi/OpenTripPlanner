@@ -21,6 +21,7 @@ import javax.ws.rs.core.Application;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
+import org.opentripplanner.index.NominatimGeocoderResource;
 
 /**
  * A JAX-RS Application subclass which provides hard-wired configuration of an OTP server.
@@ -73,6 +74,7 @@ public class OTPApplication extends Application {
             IndexAPI.class,
             ExternalGeocoderResource.class,
             GeocoderResource.class,
+            NominatimGeocoderResource.class,
             SimpleIsochrone.class,
             TileService.class,
             BikeRental.class,

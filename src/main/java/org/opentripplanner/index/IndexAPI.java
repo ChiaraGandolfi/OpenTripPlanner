@@ -63,6 +63,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -145,7 +146,26 @@ public class IndexAPI {
        AgencyAndId stopId = GtfsLibrary.convertIdFromString(stopIdString);
        Stop stop = index.stopForId.get(stopId);
        if (stop != null) {
-           return Response.status(Status.OK).entity(stop).build();
+           return Response.status(Status.OK).entity(Arrays.asList(stop)).build();
+       } else { 
+           return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
+       }
+   }
+   
+   /** Return specific transit stop in the graph, by ID. */
+   @GET
+   @Path("/stopsByName")
+   public Response getStopByName (@QueryParam("name") String stopName) {
+       List<Stop> stops = new ArrayList<Stop>();
+       
+       for (Stop stop : index.stopForId.values()) {
+           if (stop.getName().toLowerCase().contains(stopName.toLowerCase())) {
+               stops.add(stop);
+           }
+       }
+       
+       if (stops.size() > 0) {
+           return Response.status(Status.OK).entity(stops).build();
        } else { 
            return Response.status(Status.NOT_FOUND).entity(MSG_404).build();
        }

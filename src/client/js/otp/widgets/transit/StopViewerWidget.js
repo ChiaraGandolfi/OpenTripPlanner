@@ -101,6 +101,8 @@ otp.widgets.transit.StopViewerWidget =
             // rearrange stoptimes, flattening and sorting;
             _.each(data, function(stopTime){
                 var routeId = stopTime.pattern.id.substring(0,stopTime.pattern.id.lastIndexOf(':'));
+                routeId = routeId.substring(0, routeId.lastIndexOf(':'));
+                console.log("Route ID: " + routeId);
                 _.each(stopTime.times,function(time){
                     var pushTime = {};
                     pushTime.routeShortName = this_.module.webapp.indexApi.routes[routeId].routeData.shortName;
